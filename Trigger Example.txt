@@ -1,0 +1,5 @@
+create trigger useryear on USERS after insert as begin
+declare @birth date
+select @birth=BIRTHDATE from inserted
+update USERS set Years=DATEDIFF(YEAR,BIRTHDATE,GETDATE())
+end
